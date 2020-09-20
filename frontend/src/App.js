@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import  React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {Container} from '@material-ui/core';
+
+import EnterNamePage from './EnterNamePage/EnterNamePage';
+import EnterRoomPage from './EnterRoomPage/EnterRoomPage';
+
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPage: 'name'
+        }
+    }
+
+    displayPage() {
+        switch(this.state.currentPage) {
+            case 'name':
+                return <EnterNamePage/>
+            case 'room':
+                return <EnterRoomPage/>
+        }
+    }
+
+    render() {
+        return (
+            <Container>
+                { this.displayPage() }
+            </Container>
+        )
+    }   
 }
 
 export default App;
