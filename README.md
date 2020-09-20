@@ -7,6 +7,7 @@
   - board
   - buttons
   - connect 4 game
+  
 - waiting room
   - login
   - join room
