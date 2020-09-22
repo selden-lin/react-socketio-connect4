@@ -5,6 +5,8 @@ import {Container} from '@material-ui/core';
 import EnterNamePage from '../EnterNamePage/EnterNamePage';
 import EnterRoomPage from '../EnterRoomPage/EnterRoomPage';
 import EnterJoinRoomPage from '../EnterJoinRoomPage/EnterJoinRoomPage';
+import ConnectFourGame from '../ConnectFourGame/ConnectFourGame';
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -20,6 +22,7 @@ class App extends React.Component {
 
     setName(name) {
         this.setState({playerName: name});
+        console.log(this.state)
     } 
 
     setRoomId(room) {
@@ -39,7 +42,11 @@ class App extends React.Component {
             case 'join':
                 return <EnterRoomPage mode='join' setRoom={this.setRoomId} setPage={this.setPage}/>
             case 'create':
-                return <EnterRoomPage mode='create' setRoom={this.setRoomId} setPage={this.setPage}/>  
+                return <EnterRoomPage mode='create' setRoom={this.setRoomId} setPage={this.setPage}/> 
+            case 'game':
+                return <ConnectFourGame/>
+            default:
+                return <EnterNamePage setName={this.setName} setPage={this.setPage}/>
         }
     }
 

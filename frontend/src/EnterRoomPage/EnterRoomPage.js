@@ -21,8 +21,31 @@ class EnterRoomPage extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            mode: new String(this.props.mode).charAt(0).toUpperCase() + this.props.mode.slice(1)
+            mode: new String(this.props.mode).charAt(0).toUpperCase() + this.props.mode.slice(1),
+            roomId: ""
         }
+        this.cancelClick = this.cancelClick.bind(this)
+        this.submitClick = this.submitClick.bind(this);
+        this.textChange = this.textChange.bind(this)
+    }
+
+    cancelClick() {
+        this.props.setPage('name');
+    }
+
+    submitClick() {
+        if(!this.state.roomId) return;
+        
+        if(this.props.mode === "join") {
+            this.props.setRoom(this.state.roomId)
+        } else if(this.props.mode === "create") {
+            this.props.setRoom(this.state.roomId)
+        }
+        this.props.setPage('game')
+    }
+
+    textChange(event) {
+        this.setState({roomId: event.target.value})
     }
 
     render() {
@@ -35,15 +58,15 @@ class EnterRoomPage extends React.Component{
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>
                     <form>
-                        <TextField className={classes.textInput} label="Enter room name"/>
+                        <TextField className={classes.textInput} onChange={this.textChange} label="Enter room name"/>
                     </form>
                 </Grid>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>
                     <form>
-                        <Button className={classes.submitBtn} variant="contained" color="primary">Submit</Button>
-                        <Button className={classes.submitBtn} variant="contained" color="primary">Cancel</Button>
+                        <Button className={classes.submitBtn} variant="contained" onClick={this.cancelClick} color="primary">Cancel</Button>
+                        <Button className={classes.submitBtn} variant="contained" onClick={this.submitClick} color="primary">Submit</Button>
                     </form>
                 </Grid>
             </Grid>
