@@ -43,7 +43,7 @@ class ConnectFourGame extends React.Component{
         let makeBtns = () => {
             let btns = [];
             for(let x=0;x<7;x++) {
-
+                btns.push(<GameBtn key={x}  dim={(this.state.gridDim-28)/8+2}/>)
             }
             return btns;
         }
@@ -56,6 +56,7 @@ class ConnectFourGame extends React.Component{
                 <Grid item xs={2}/>
                 <Grid item xs={8}>
                     <div ref={this.gameGrid} className={styles.gameGrid}>
+                        {makeBtns()}
                         {makeSquares()}
                     </div>
                 </Grid>

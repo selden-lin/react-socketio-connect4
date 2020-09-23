@@ -1,19 +1,15 @@
 import React from 'react';
 
-import {Grid, TextField, Button} from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Button} from '@material-ui/core';
 import { withStyles} from '@material-ui/core/styles';
 
 const styles = theme =>({
-    submitBtn: {
-        display: 'block!important',
-        margin: '10px!important',
-        width: '100%!important'
-    },
-    textInput: {
-        width: '100%!important'
-    },
-    title: {
-        textAlign: 'center'
+    gameBtn: {
+        margin: '2px',
+        border: '1px solid black',
+        padding: '0px',
+        height: '50px'
     }
 });
 
@@ -25,11 +21,9 @@ class GameBtn extends React.Component{
     render() {
         const {classes} = this.props
         return (
-            <Grid container spacing={3}>
-                <Grid item xs={12}>
-                    <h1 className={classes.title}>Connect 4 game</h1>
-                </Grid>
-            </Grid>
+            <Button className={classes.gameBtn} style={{width: this.props.dim}}>
+                <ExpandMoreIcon/>
+            </Button>
         )
     }
 }
