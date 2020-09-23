@@ -21,7 +21,7 @@ class EnterRoomPage extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            mode: new String(this.props.mode).charAt(0).toUpperCase() + this.props.mode.slice(1),
+            mode: this.props.mode.toString().charAt(0).toUpperCase() + this.props.mode.slice(1),
             roomId: ""
         }
         this.cancelClick = this.cancelClick.bind(this)

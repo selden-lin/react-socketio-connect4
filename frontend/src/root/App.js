@@ -20,6 +20,8 @@ class App extends React.Component {
         this.setPage = this.setPage.bind(this);
     }
 
+    
+    
     setName(name) {
         this.setState({playerName: name});
         console.log(this.state)
@@ -44,7 +46,7 @@ class App extends React.Component {
             case 'create':
                 return <EnterRoomPage mode='create' setRoom={this.setRoomId} setPage={this.setPage}/> 
             case 'game':
-                return <ConnectFourGame/>
+                return <ConnectFourGame />
             default:
                 return <EnterNamePage setName={this.setName} setPage={this.setPage}/>
         }

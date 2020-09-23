@@ -14,14 +14,11 @@ const styles = theme =>({
 });
 
 class GameBtn extends React.Component{
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const {classes} = this.props
         return (
-            <Button className={classes.gameBtn} style={{width: this.props.dim}}>
+            <Button className={classes.gameBtn} onClick={()=>this.props.makeMove(this.props.col)} style={{width: this.props.dim}}>
                 <ExpandMoreIcon/>
             </Button>
         )
