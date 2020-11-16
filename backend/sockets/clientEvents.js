@@ -50,14 +50,15 @@ events.move = (socket, io) => {
     }
 }
 
-events.disconnecting = (socket, io) => {
-    return () => {
-        Object.keys(rooms).forEach((room) => {
-            io.to(room).emit('gameDisconnect', {'room': room})
-            roomCtrl.removeRoom(room);
-        })
-    }
-}
+// events.disconnecting = (socket, io) => {
+//     return () => {
+//         roomCtrl.removeRoom
+//         Object.keys(rooms).forEach((room) => {
+//             io.to(room).emit('gameDisconnect', {'room': room})
+//             roomCtrl.removeRoom(room);
+//         })
+//     }
+// }
 
 module.exports = function(socket, io) {
     // attach all events to socketio server

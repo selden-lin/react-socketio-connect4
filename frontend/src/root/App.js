@@ -6,15 +6,18 @@ import EnterNamePage from '../EnterNamePage/EnterNamePage';
 import EnterRoomPage from '../EnterRoomPage/EnterRoomPage';
 import EnterJoinRoomPage from '../EnterJoinRoomPage/EnterJoinRoomPage';
 import ConnectFourGame from '../ConnectFourGame/ConnectFourGame';
+import Socket from './sockets'
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 'game',
+            currentPage: 'name',
             playerName: '',
-            roomId: ''
+            roomId: '',
+            joinOrCreateRoom: ''
         }
+        this.socket = null;
         this.setName = this.setName.bind(this);
         this.setRoomId = this.setRoomId.bind(this);
         this.setPage = this.setPage.bind(this);
@@ -24,14 +27,19 @@ class App extends React.Component {
     
     setName(name) {
         this.setState({playerName: name});
-        console.log(this.state)
     } 
 
     setRoomId(room) {
         this.setState({roomId: room})
+        this.socket = new Socket(this.state.joinOrCreateRoom, this.state.playerName, this.state.roomId);
     }
 
     setPage(page) {
+        if(page == 'join') {
+            this.setState({joinOrCreateRoom: 'join'})
+        } else if(page == 'create') {
+            this.setState({joinOrCreateRoom: 'create'})
+        }
         this.setState({currentPage: page})
     }
 

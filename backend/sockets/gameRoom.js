@@ -6,7 +6,9 @@ const PlayerRoomAssigner = {
             throw 'Room name is invalid or already exists'
             return;
         } 
-
+        console.log("Create room")
+        console.log(playerId);
+        console.log(roomId);
         _gameRooms[roomId] = [playerId]
     },
     joinRoom: (playerId, roomId) => {
